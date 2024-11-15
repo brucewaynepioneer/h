@@ -71,6 +71,13 @@ python3 -m devgagan
 - Click on  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 - Fill your values and click deploy ✅
 
+# Deploy to Heroku
+
+Click the button below to deploy this bot to Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/brucewaynepioneer/h)
+
+
 ## Deploy on Render
 - Fork and star the repo
 - edit `config.py` same as guided for VPS deployment (you can edit on render also by filling enviroment variables)
