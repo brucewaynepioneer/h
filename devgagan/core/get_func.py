@@ -1,9 +1,9 @@
 
 #devgaganin
-import re
 import asyncio
 import time
 import os
+import re
 import subprocess
 import requests
 from devgagan import app
@@ -106,8 +106,11 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             delete_words = load_delete_words(chatx)
             for word in delete_words:
                 original_file_name = original_file_name.replace(word, "")
-            video_file_name = original_file_name + " " + custom_rename_tag    
-            new_file_name = original_file_name + " " + custom_rename_tag + "." + file_extension
+            video_file_name = original_file_name + " " + custom_rename_tag
+            replacements = load_replacement_words(chatx)
+            for word, replace_word in replacements.items():
+                filenamer = original_file_name.replace(word, replace_word)
+            new_file_name = filenamer + " " + custom_rename_tag + "." + file_extension
             os.rename(file, new_file_name)
             file = new_file_name
 
