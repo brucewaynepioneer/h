@@ -1,5 +1,5 @@
-#devgaganin
 
+#devgaganin
 import asyncio
 import time
 import os
@@ -38,7 +38,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
     if 't.me/c/' in msg_link or 't.me/b/' in msg_link:
         parts = msg_link.split("/")
         if 't.me/b/' not in msg_link:
-            chat = int('-100' + str(parts[parts.index('c') + 1]))
+            chat = int('-100' + str(parts[parts.index('c') + 1])) # topic group/subgroup support enabled
         else:
             chat = msg_link.split("/")[-2]       
         file = ""
@@ -519,6 +519,7 @@ async def callback_query_handler(event):
 
     elif event.data == b'reset':
         try:
+            user_id_str = str(user_id)
             collection.update_one(
                 {"_id": user_id},
                 {"$unset": {
@@ -534,7 +535,6 @@ async def callback_query_handler(event):
                 os.remove(thumbnail_path)
             await event.respond("✅ Reset successfully, to logout click /logout")
         except Exception as e:
-            
             await event.respond(f"Error clearing delete list: {e}")
     
     elif event.data == b'remthumb':
